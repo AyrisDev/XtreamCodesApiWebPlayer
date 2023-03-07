@@ -35,8 +35,10 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   const movieRequest = async () => {
-    const url = sessionStorage.getItem("xtreamUrl");
-    const urll = await JSON.parse(sessionStorage.getItem("xtreamUrl"));
+    const url = sessionStorage.getItem("xtreamUrl") as string;
+    const urll = await JSON.parse(
+      sessionStorage.getItem("xtreamUrl") as string
+    );
     if (url === null) {
       router.replace("/Login");
     }
