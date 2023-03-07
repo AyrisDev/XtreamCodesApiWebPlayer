@@ -20,6 +20,7 @@ const MovieId = () => {
   const [movieInfo, setMovieInfo] = useState();
   const [playerUrl, setPlayerUrl] = useState("");
   const [ready, setReady] = useState(false);
+
   const movieRequest = async () => {
     const url = sessionStorage.getItem("xtreamUrl");
     const dataUrl = sessionStorage.getItem("dataUrl");
@@ -57,7 +58,7 @@ const MovieId = () => {
   }, [movieId]);
 
   const ffmpeg = createFFmpeg({
-    //corePath: "/files/ffmpeg/ffmpeg-core.js",
+    corePath: "/files/ffmpeg/ffmpeg-core.js",
     // corePath: "/ffmpeg/ffmpeg-core.js",
     log: true,
     progress: (p) => {
@@ -71,8 +72,8 @@ const MovieId = () => {
 
     console.log("FFmpeg loaded");
     console.log("Fetching your video file");
-    console.log(`URL: ${url}`);
-    let file = await fetchFile(`https://cors-anywhere.kingbri.dev/${url}`);
+    console.log(`URL: ${playerUrl}`);
+    let file = await fetchFile(playerUrl);
 
     ffmpeg.FS("writeFile", "test.mkv", file);
     setMessage("Remuxing started");
@@ -139,3 +140,22 @@ const MovieId = () => {
 };
 
 export default MovieId;
+
+export async function getServerSideProps(context: NextPageContext) {
+  /**
+   * Why these headers?
+   * - FFmpeg core (ffmpeg-core) uses SharedArrayBuffer, SharedArrayBuffer is disabled
+   * in all major browsers from 2018, reason = Spectre (security vulnerability)
+   * - FFmpeg core won't load, if these headers are not present
+   */
+
+  // prevent XS-leaks, don't load cross origin documents in the same browsing context
+  context?.res?.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+
+  // prevent docs from loading cross-origin resource, only load resources from the same origin
+  context?.res?.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+
+  return {
+    props: {},
+  };
+}
