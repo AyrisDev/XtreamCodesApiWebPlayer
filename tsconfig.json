@@ -24,7 +24,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "components/CardGenre.js"
+    "components/CardGenre.js",
+    "components/layout.js"
   ],
   "exclude": ["node_modules"]
 }
