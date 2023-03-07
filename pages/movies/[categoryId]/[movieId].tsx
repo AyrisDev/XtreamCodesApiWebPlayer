@@ -140,7 +140,7 @@ const MovieId = () => {
 
 export default MovieId;
 
-export async function getServerSideProps(context: NextPageContext) {
+export async function getServerSideProps(context) {
   /**
    * Why these headers?
    * - FFmpeg core (ffmpeg-core) uses SharedArrayBuffer, SharedArrayBuffer is disabled
