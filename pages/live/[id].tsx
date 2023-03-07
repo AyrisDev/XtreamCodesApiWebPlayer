@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Genres from "@/components/Genres";
 import CardGenre from "@/components/CardGenre";
 
-function index() {
+function Live() {
   const router = useRouter();
   const [movie, setMovie] = useState();
   const { id } = router.query;
@@ -57,4 +57,4 @@ function index() {
   );
 }
 
-export default index;
+export default Live;

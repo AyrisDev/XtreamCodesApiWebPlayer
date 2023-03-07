@@ -13,7 +13,7 @@ const ffmpeg = createFFmpeg({
   corePath: "./node_modules/@ffmpeg/core/ffmpeg-core.js",
 });
 
-const movieId = () => {
+const MovieId = () => {
   const router = useRouter();
 
   const [videoSrc, setVideoSrc] = useState("");
@@ -105,4 +105,4 @@ const movieId = () => {
   );
 };
 
-export default movieId;
+export default MovieId;

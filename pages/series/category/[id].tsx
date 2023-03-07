@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import CardGenre from "@/components/movieCard";
 
-function categories() {
+function Categories() {
   const router = useRouter();
   const [movie, setMovie] = useState();
   const { id } = router.query;
@@ -50,4 +50,4 @@ function categories() {
   );
 }
 
-export default categories;
+export default Categories;

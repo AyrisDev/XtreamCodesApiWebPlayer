@@ -6,7 +6,7 @@ import { CiSettings } from "react-icons/ci";
 import Logo from "../assets/vercel.svg";
 import { useState, useEffect, useRef } from "react";
 
-function navigation({ movie, live, seriesCate }) {
+function Navigation({ movie, live, seriesCate }) {
   const [movieModal, setMovieModal] = useState(true);
   const [secMovie, setSecMovie] = useState(false);
   const [secLive, setSecLive] = useState(false);
@@ -266,4 +266,4 @@ function navigation({ movie, live, seriesCate }) {
   );
 }
 
-export default navigation;
+export default Navigation;
