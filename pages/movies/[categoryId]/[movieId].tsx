@@ -4,8 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { ReactNetflixPlayer } from "react-netflix-player";
-import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg/dist/ffmpeg.min.js";
-import { getCreateFFmpegCore } from "@ffmpeg/core";
+import { createFFmpeg, fetchFile } from "../../../utils/ffmpeg-core";
 
 const ffmpeg = createFFmpeg({
   log: true,

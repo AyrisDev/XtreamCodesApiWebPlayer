@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import { Autoplay, Pagination, Navigation, FreeMode } from "swiper";
-const Slider = ({ lastVod, lastTime }) => {
+const Slider = ({ lastVod, lastTime }: { lastVod: any; lastTime: number }) => {
   return (
     <div className="flex space-x-6 space-y-6 overflow-y-hidden overflow-x-scroll my-10 ml-36 mr-10 scrollbar justify-center items-center drop-shadow-xl  scrollbar-hide scrollbar scrollbar-thin scrollbar-thumb-[#10121b]  scrollbar-track-[#10121b]/30 pb-4  ">
       <Swiper
