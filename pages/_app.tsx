@@ -26,13 +26,13 @@ export default function App({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     const userName = sessionStorage.getItem("username");
-    setData(userName);
+
     if (userName === null) {
       router.replace("/Login");
       setLogin(true);
     }
     console.log(userName + " userName  " + "afdadf");
-  }, [data]);
+  }, []);
 
   const movieRequest = async () => {
     const url = sessionStorage.getItem("xtreamUrl");
