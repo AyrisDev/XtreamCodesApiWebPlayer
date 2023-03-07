@@ -1,4 +1,3 @@
-import type { NextPage, NextPageContext } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -15,7 +14,7 @@ import BeinSlider from "@/components/beinSlider";
 import MoviesStuff from "@/components/MoviesStuff";
 import Sliderr from "@/components/Slider";
 
-const HomePage: NextPage = ({ lastVod, lastTime, beinSport, lastSeries }) => {
+export default function HomePage({ lastVod, lastTime, beinSport, lastSeries }) {
   return (
     <>
       <Head>
@@ -120,11 +119,9 @@ const HomePage: NextPage = ({ lastVod, lastTime, beinSport, lastSeries }) => {
       </div>
     </>
   );
-};
+}
 
-export default HomePage;
-
-export async function getServerSideProps(context: NextPageContext) {
+export async function getServerSideProps(context) {
   /**
    * Why these headers?
    * - FFmpeg core (ffmpeg-core) uses SharedArrayBuffer, SharedArrayBuffer is disabled
