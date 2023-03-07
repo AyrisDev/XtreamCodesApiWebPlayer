@@ -7,6 +7,15 @@ import { ReactNetflixPlayer } from "react-netflix-player";
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
 import { getCreateFFmpegCore } from "@ffmpeg/core";
 
+const ffmpeg = createFFmpeg({
+  corePath: "/ffmpeg-core/dist/ffmpeg-core.js",
+  // corePath: "/ffmpeg/ffmpeg-core.js",
+  log: true,
+  progress: (p) => {
+    console.log(p);
+  },
+});
+
 const MovieId = () => {
   const router = useRouter();
 
@@ -20,6 +29,10 @@ const MovieId = () => {
   const [movieInfo, setMovieInfo] = useState();
   const [playerUrl, setPlayerUrl] = useState("");
   const [ready, setReady] = useState(false);
+
+  const load = async () => {
+    await ffmpeg.load();
+  };
 
   const movieRequest = async () => {
     const url = sessionStorage.getItem("xtreamUrl");
@@ -46,35 +59,17 @@ const MovieId = () => {
 
     const movieData = data?.movie_data || {};
     const movieUrl = `${dataUrll}/movie/${usernamee}/${passwordd}/${movieData?.stream_id}.${movieData?.container_extension}`;
-    setPlayerUrl(movieUrl);
+
+    await setPlayerUrl(movieUrl);
     console.log(movieUrl);
-    doTranscode();
-  };
-
-  useEffect(() => {
-    if (movieId !== undefined) {
-      movieRequest();
-    }
-  }, [movieId]);
-
-  const ffmpeg = createFFmpeg({
-    corePath: "/files/ffmpeg/ffmpeg-core.js",
-    // corePath: "/ffmpeg/ffmpeg-core.js",
-    log: true,
-    progress: (p) => {
-      console.log(p);
-    },
-  });
-
-  async function doTranscode() {
-    await ffmpeg.load();
-    console.log("Loading ffmpeg-core.js");
+    load();
     await ffmpeg.isLoaded();
-
+    const purl =
+      "http://forzaiptv.com:8080//movie/mstfyldz/syhvbyz1903/83982.mkv";
     console.log("FFmpeg loaded");
     console.log("Fetching your video file");
-    console.log(`URL: ${playerUrl}`);
-    let file = await fetchFile(playerUrl, { mode: "no-cors" });
+    console.log("URL:" + purl);
+    let file = await fetchFile(`https://cors-anywhere.herokuapp.com/${purl}`);
 
     ffmpeg.FS("writeFile", "test.mkv", file);
     console.log("Remuxing started");
@@ -95,16 +90,20 @@ const MovieId = () => {
 
     console.log("Remuxing complete");
 
-    const data = ffmpeg.FS("readFile", "test.mp4");
+    const dataa = ffmpeg.FS("readFile", "test.mp4");
     setVideoSrc(
-      URL.createObjectURL(new Blob([data.buffer], { type: "video/mp4" }))
+      URL.createObjectURL(new Blob([dataa.buffer], { type: "video/mp4" }))
     );
 
     const subs = ffmpeg.FS("readFile", "subs.vtt");
     setSubsSrc(URL.createObjectURL(new Blob([subs], { type: "text/vtt" })));
+  };
 
-    setShowVideoPlayer(true);
-  }
+  useEffect(() => {
+    if (movieId !== undefined) {
+      movieRequest();
+    }
+  }, [movieId]);
 
   return (
     <div className="w-screen h-screen">

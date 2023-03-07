@@ -15,7 +15,7 @@ import BeinSlider from "@/components/beinSlider";
 import MoviesStuff from "@/components/MoviesStuff";
 import Sliderr from "@/components/Slider";
 
-const HomePage: NextPage = () => {
+const HomePage: NextPage = ({ lastVod, lastTime, beinSport, lastSeries }) => {
   return (
     <>
       <Head>

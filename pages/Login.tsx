@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 export default function Login() {
   const router = useRouter();
   const [user, setUser] = useState("");
-  const [password, setPassword] = useState();
+  const [password, setPassword] = useState("");
   const [errorModal, setErrorModal] = useState(false);
   console.log(password);
 
@@ -66,8 +66,8 @@ export default function Login() {
           <div className="mb-4 text-lg">
             <input
               className="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md"
-              type="Password"
-              placeholder="*********"
+              type="text"
+              placeholder=""
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
