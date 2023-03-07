@@ -6,6 +6,12 @@ import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import { Autoplay, Pagination, Navigation, FreeMode } from "swiper";
 
+interface MoviesStuff {
+  lastSeries: {
+    title: string;
+  };
+}
+
 const MoviesStuff = ({ lastSeries, title, lastTime }) => {
   return (
     <div className="relative flex flex-col space-y-2 my-10 px-8 max-w-[1400px] mx-auto">
