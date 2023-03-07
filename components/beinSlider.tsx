@@ -27,6 +27,7 @@ const BeinSlider = ({ beinSport }) => {
                 <SwiperSlide className="flex w-52 h-32 sm:w-64 sm:h-36 border-[3px] items-center justify-center border-[#f9f9f9] border-opacity-10 rounded-lg cursor-pointer shadow-xl overflow-hidden  group">
                   <img
                     src={filterLastVod.stream_icon}
+                    key={filterLastVod.stream_id}
                     className="mx-auto flex justify-center items-center text-center w-48 h-48 hover:border-opacity-80 hover:shadow-2xl transform hover:scale-105 transition duration-300 "
                   />
                 </SwiperSlide>

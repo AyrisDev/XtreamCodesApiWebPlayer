@@ -138,7 +138,9 @@ function Navigation({ movie, live, seriesCate }) {
             <>
               {live.map((genre) => (
                 <div className="font-bold   relative  two px-4">
-                  <a href={`/live/${genre.category_id} `}>
+                  <a
+                    href={`/live/${genre.category_id} `}
+                    key={genre.category_id}>
                     <li className=" cursor-pointer  hover:scale-105   mt-2 font-oswald relative">
                       {genre.category_name}
                     </li>
@@ -186,7 +188,9 @@ function Navigation({ movie, live, seriesCate }) {
             <>
               {movie.map((genre) => (
                 <div className="font-bold   relative  two px-4">
-                  <a href={`/movies/category/${genre.category_id}`}>
+                  <a
+                    href={`/movies/category/${genre.category_id}`}
+                    key={genre.category_id}>
                     <li className=" cursor-pointer  hover:scale-105   mt-2 font-oswald relative">
                       {genre.category_name}
                     </li>
@@ -234,7 +238,9 @@ function Navigation({ movie, live, seriesCate }) {
             <>
               {seriesCate.map((genre) => (
                 <div className="font-bold   relative  two px-4">
-                  <a href={`/series/category/${genre.category_id}`}>
+                  <a
+                    href={`/series/category/${genre.category_id}`}
+                    key={genre.category_id}>
                     <li className=" cursor-pointer  hover:scale-105   mt-2 font-oswald relative">
                       {genre.category_name}
                     </li>

@@ -31,6 +31,7 @@ const Slider = ({ lastVod, lastTime }) => {
                 <SwiperSlide className="flex justify-center items-center relative font-oswald ">
                   <a
                     href={`/movies/${filterLastVod.category_id}/${filterLastVod.stream_id} `}
+                    key={filterLastVod.stream_id}
                     className="cursor-pointer">
                     <img
                       src={filterLastVod.stream_icon}

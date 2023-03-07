@@ -44,7 +44,7 @@ function Live() {
         {movie ? (
           <>
             {movie.map((genre) => (
-              <Link href={`/live/${genre.id}`} passHref>
+              <Link href={`/live/${genre.id}`} key={genre.id} passHref>
                 <CardGenre text={genre.name} image={genre.stream_icon} />
               </Link>
             ))}
