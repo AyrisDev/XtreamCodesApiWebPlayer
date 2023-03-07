@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Genres from "@/components/Genres";
+
 import CardGenre from "@/components/movieCard";
 
 function Categories() {
