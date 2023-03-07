@@ -110,7 +110,7 @@ const MovieId = () => {
         <>
           <div className="font-bold text-[100px]">
             {" "}
-            <h1> {movieInfo.name}</h1>
+            <h1> test</h1>
           </div>
           <ReactPlayer
             url={videoSrc}
