@@ -108,7 +108,7 @@ const MovieId = () => {
 
   return (
     <div className="w-screen h-screen">
-      {movieInfo && playerUrl ? (
+      {movieInfo ? (
         <>
           <div className="font-bold text-[100px]">
             {" "}
