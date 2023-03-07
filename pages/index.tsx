@@ -15,7 +15,17 @@ import BeinSlider from "@/components/beinSlider";
 import MoviesStuff from "@/components/MoviesStuff";
 import Sliderr from "@/components/Slider";
 
-const HomePage: NextPage = ({ lastVod, lastTime, beinSport, lastSeries }) => {
+const HomePage: NextPage = ({
+  lastVod,
+  lastTime,
+  beinSport,
+  lastSeries,
+}: {
+  lastVod: Array<string | number | any>;
+  beinSport: Array<string | number | any>;
+  lastSeries: Array<string | number | any>;
+  lastTime: number;
+}) => {
   return (
     <>
       <Head>
