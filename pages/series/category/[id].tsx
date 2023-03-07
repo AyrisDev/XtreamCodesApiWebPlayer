@@ -11,7 +11,7 @@ function Categories() {
   const { id } = router.query;
 
   const movieRequest = async () => {
-    const url = sessionStorage.getItem("xtreamUrl");
+    const url = sessionStorage.getItem("xtreamUrl") as string;
     const urll = await JSON.parse(url);
     if (url === null) {
       router.replace("/Login");

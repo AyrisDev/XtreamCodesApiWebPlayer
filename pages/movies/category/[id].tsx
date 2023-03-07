@@ -14,7 +14,7 @@ function Categories() {
   const oddBgColor = "odd:bg-cyan-700";
 
   const movieRequest = async () => {
-    const url = sessionStorage.getItem("xtreamUrl");
+    const url = sessionStorage.getItem("xtreamUrl") as string;
     const urll = await JSON.parse(url);
     if (url === null) {
       router.replace("/Login");

@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const lastTime = timeStamp - 1037488;
 
   useEffect(() => {
-    const userName = sessionStorage.getItem("username");
+    const userName = sessionStorage.getItem("username") as string;
 
     if (userName === null) {
       router.replace("/Login");

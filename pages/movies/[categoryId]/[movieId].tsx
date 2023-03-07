@@ -37,10 +37,10 @@ const MovieId = () => {
   };
 
   const movieRequest = async () => {
-    const url = sessionStorage.getItem("xtreamUrl");
-    const dataUrl = sessionStorage.getItem("dataUrl");
-    const username = sessionStorage.getItem("username");
-    const password = sessionStorage.getItem("password");
+    const url = sessionStorage.getItem("xtreamUrl") as string;
+    const dataUrl = sessionStorage.getItem("dataUrl") as string;
+    const username = sessionStorage.getItem("username") as string;
+    const password = sessionStorage.getItem("password") as string;
 
     const usernamee = await JSON.parse(username);
     const passwordd = await JSON.parse(password);
