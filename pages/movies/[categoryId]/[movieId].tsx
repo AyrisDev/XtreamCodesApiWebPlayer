@@ -7,13 +7,6 @@ import { ReactNetflixPlayer } from "react-netflix-player";
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
 import { getCreateFFmpegCore } from "@ffmpeg/core";
 
-const ffmpeg = createFFmpeg({
-  log: true,
-  //  corePath: "./node_modules/@ffmpeg/core/ffmpeg-core.js,
-  // corePath: "./ffmpeg-core/dist/ffmpeg-core.js",
-  corePath: "/files/ffmpeg/ffmpeg-core.js",
-});
-
 const MovieId = () => {
   const router = useRouter();
 
@@ -63,14 +56,53 @@ const MovieId = () => {
     }
   }, [movieId]);
 
-  const load = async () => {
-    await ffmpeg.load();
-    setReady(true);
-  };
+  const ffmpeg = createFFmpeg({
+    //corePath: "/files/ffmpeg/ffmpeg-core.js",
+    // corePath: "/ffmpeg/ffmpeg-core.js",
+    log: true,
+    progress: (p) => {
+      console.log(p);
+    },
+  });
 
-  useEffect(() => {
-    load();
-  }, []);
+  async function doTranscode() {
+    console.log("Loading ffmpeg-core.js");
+    await ffmpeg.load();
+
+    console.log("FFmpeg loaded");
+    console.log("Fetching your video file");
+    console.log(`URL: ${url}`);
+    let file = await fetchFile(`https://cors-anywhere.kingbri.dev/${url}`);
+
+    ffmpeg.FS("writeFile", "test.mkv", file);
+    setMessage("Remuxing started");
+    await ffmpeg.run(
+      "-i",
+      "test.mkv",
+      "-map",
+      "0:s",
+      "subs.vtt",
+      "-map",
+      "0:v",
+      "-map",
+      "0:a:0",
+      "-c",
+      "copy",
+      "test.mp4"
+    );
+
+    console.log("Remuxing complete");
+
+    const data = ffmpeg.FS("readFile", "test.mp4");
+    setVideoSrc(
+      URL.createObjectURL(new Blob([data.buffer], { type: "video/mp4" }))
+    );
+
+    const subs = ffmpeg.FS("readFile", "subs.vtt");
+    setSubsSrc(URL.createObjectURL(new Blob([subs], { type: "text/vtt" })));
+
+    setShowVideoPlayer(true);
+  }
 
   return (
     <div className="w-screen h-screen">
