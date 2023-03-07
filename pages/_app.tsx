@@ -8,7 +8,7 @@ import moment from "moment";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const [data, setData] = useState();
+  const [data, setData] = useState("");
   const [login, setLogin] = useState(false);
 
   const [movie, setMovie] = useState();
