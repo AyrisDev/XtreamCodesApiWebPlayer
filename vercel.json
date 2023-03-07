@@ -1,7 +1,6 @@
 {
   "headers": [
     {
-      "cleanUrls": true,
       "trailingSlash": false,
       "source": "/api/(.*)",
       "headers": [
