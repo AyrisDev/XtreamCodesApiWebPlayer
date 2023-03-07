@@ -26,9 +26,10 @@ const MoviesStuff = ({ results, title, lastTime }) => {
               {results
                 .filter((lastVoda) => lastVoda.last_modified > lastTime)
                 .map((filterLastVod) => (
-                  <SwiperSlide className="flex rounded-lg w-[330px] h-[210px] overflow-hidden shadow-xl cursor-pointer border-[3px] border-[#f9f9f9] border-opacity-10  hover:border-opacity-80 hover:shadow-2xl transform hover:scale-105 transition duration-300 ">
+                  <SwiperSlide
+                    key={filterLastVod.stream_id}
+                    className="flex rounded-lg w-[330px] h-[210px] overflow-hidden shadow-xl cursor-pointer border-[3px] border-[#f9f9f9] border-opacity-10  hover:border-opacity-80 hover:shadow-2xl transform hover:scale-105 transition duration-300 ">
                     <a
-                      key={filterLastVod.stream_id}
                       href={`/${filterLastVod.category_id}/${filterLastVod.stream_id} `}
                       className="cursor-pointer w-[330px] h-[210px]">
                       <img
