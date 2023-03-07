@@ -24,9 +24,7 @@ const MovieId = () => {
 
   const { movieId } = router.query;
 
-  console.log(movieId + "moviedata");
-
-  const [movieInfo, setMovieInfo] = useState<any[]>([]);
+  const [movieInfo, setMovieInfo] = useState<any[]>("");
   const [playerUrl, setPlayerUrl] = useState("");
 
   const load = async () => {
