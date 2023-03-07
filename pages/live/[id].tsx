@@ -7,7 +7,7 @@ import CardGenre from "@/components/CardGenre";
 
 function Live() {
   const router = useRouter();
-  const [movie, setMovie] = useState();
+  const [movie, setMovie] = useState<any[]>([]);
   const { id } = router.query;
   const routerId = id;
   console.log(id + "catid");
