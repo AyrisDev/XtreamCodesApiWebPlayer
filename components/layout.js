@@ -1,6 +1,7 @@
 import React from "react";
 import Footer from "./footer";
 import Navigation from "./navigation";
+
 const layout = ({
   children,
   movie,
@@ -8,7 +9,7 @@ const layout = ({
   seriesCate,
 }: {
   lastVod: Array<string | number | any>,
-  children: Array<string | number | any>,
+
   movie: Array<string | number | any>,
   live: Array<string | number | any>,
   seriesCate: Array<string | number | any>,
