@@ -64,7 +64,7 @@ export default function App({ Component, pageProps }: AppProps) {
     setLive(livedata);
     setLastSeries(lastSeriesData);
 
-    const result = lastVodData.filter((word) => word.added > lastTime);
+    const result = lastVodData.filter((word: any) => word.added > lastTime);
     console.log(JSON.stringify(livedata[1].category_name) + "livedata");
     console.log(JSON.stringify(voddata[1].category_name) + "livedata");
     console.log(JSON.stringify(seriesCat[1].category_name) + "livedata");
