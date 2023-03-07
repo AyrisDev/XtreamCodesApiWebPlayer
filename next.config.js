@@ -11,12 +11,12 @@ module.exports = {
         source: "/:path*",
         headers: [
           {
-            key: "x-custom-header",
-            value: "my custom header value",
+            key: "Cross-Origin-Embedder-Policy",
+            value: "require-corp",
           },
           {
-            key: "x-another-custom-header",
-            value: "my other custom header value",
+            key: "Cross-Origin-Opener-Policy",
+            value: "same-origin",
           },
         ],
       },

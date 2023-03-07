@@ -40,7 +40,7 @@ export default function Home({
           <Sliderr lastVod={lastVod} lastTime={lastTime} />
           <CatLogo />
           <BeinSlider beinSport={beinSport} />
-          <MoviesStuff results={lastSeries} lastTime={lastTime} title="" />
+          <MoviesStuff Lseries={lastSeries} lastTime={lastTime} title="" />
           {/*Bein Sports
           <h2 className="font-semibold ml-36  items-center  flex font-oswald text-xl uppercase">
             Son Eklenen Filmler
