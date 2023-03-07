@@ -10,7 +10,7 @@ import { getCreateFFmpegCore } from "@ffmpeg/core";
 const ffmpeg = createFFmpeg({
   log: true,
   //  corePath: "./node_modules/@ffmpeg/core/ffmpeg-core.js,
-  corePath: "./node_modules/@ffmpeg/core/ffmpeg-core.js",
+  corePath: "./ffmpeg-core/dist/ffmpeg-core.js",
 });
 
 const MovieId = () => {
