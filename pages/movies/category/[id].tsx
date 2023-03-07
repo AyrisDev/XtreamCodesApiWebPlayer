@@ -43,7 +43,10 @@ function Categories() {
         {movie ? (
           <>
             {movie.map((genre) => (
-              <Link href={`/live/${genre.id}`} passHref key={genre.id}>
+              <Link
+                href={`/movies/${id}/${genre.stream_id}`}
+                passHref
+                key={genre.stream_id}>
                 <CardGenre text={genre.name} image={genre.stream_icon} />
               </Link>
             ))}
