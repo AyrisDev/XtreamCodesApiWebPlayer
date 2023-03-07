@@ -26,9 +26,8 @@ const MovieId = () => {
 
   console.log(movieId + "moviedata");
 
-  const [movieInfo, setMovieInfo] = useState();
+  const [movieInfo, setMovieInfo] = useState<any[]>([]);
   const [playerUrl, setPlayerUrl] = useState("");
-  const [ready, setReady] = useState(false);
 
   const load = async () => {
     if (!ffmpeg.isLoaded()) {
