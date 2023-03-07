@@ -11,7 +11,7 @@ export default function MoviesStuff({
   title,
   lastTime,
 }: {
-  lastSeries: string;
+  lastSeries: Array<string | number>;
   title: string;
   lastTime: number;
 }) {

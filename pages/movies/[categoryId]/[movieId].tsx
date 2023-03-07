@@ -4,13 +4,13 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { ReactNetflixPlayer } from "react-netflix-player";
-import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
+import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg/dist/ffmpeg.min.js";
 import { getCreateFFmpegCore } from "@ffmpeg/core";
 
 const ffmpeg = createFFmpeg({
   log: true,
   //  corePath: "./node_modules/@ffmpeg/core/ffmpeg-core.js,
-  corePath: "./ffmpeg-core/dist/ffmpeg-core.js",
+  // corePath: "./ffmpeg-core/dist/ffmpeg-core.js",
 });
 
 const MovieId = () => {
