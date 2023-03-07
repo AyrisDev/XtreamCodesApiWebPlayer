@@ -6,7 +6,11 @@ import "swiper/css/pagination";
 import "swiper/css/free-mode";
 import { Autoplay, Pagination, Navigation, FreeMode } from "swiper";
 
-const BeinSlider = ({ beinSport }) => {
+const BeinSlider = ({
+  beinSport,
+}: {
+  beinSport: Array<string | number | any>;
+}) => {
   return (
     <section className="flex flex-col md:flex-row justify-center items-center mt-10 gap-6 px-8 max-w-[1400px] mx-auto">
       <Swiper
