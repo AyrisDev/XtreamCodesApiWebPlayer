@@ -40,7 +40,7 @@ function Live() {
       <Head>
         <title>Movies | Watcho</title>
       </Head>
-      <section className="mb-10 flex flex-wrap justify-between space-y-2 ">
+      <section className="mb-10 flex flex-wrap justify-center space-y-2  space-x-2 ">
         {movie ? (
           <>
             {movie.map((genre) => (
