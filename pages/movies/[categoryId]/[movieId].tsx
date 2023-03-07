@@ -31,7 +31,9 @@ const MovieId = () => {
   const [ready, setReady] = useState(false);
 
   const load = async () => {
-    await ffmpeg.load();
+    if (!ffmpeg.isLoaded()) {
+      await ffmpeg.load();
+    }
   };
 
   const movieRequest = async () => {
