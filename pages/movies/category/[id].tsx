@@ -7,11 +7,10 @@ import CardGenre from "@/components/movieCard";
 
 function Categories() {
   const router = useRouter();
-  const [movie, setMovie] = useState();
+  const [movie, setMovie] = useState<any[]>([]);
   const { id } = router.query;
-  const routerId = id;
+
   console.log(id + "catid");
-  const oddBgColor = "odd:bg-cyan-700";
 
   const movieRequest = async () => {
     const url = sessionStorage.getItem("xtreamUrl") as string;
