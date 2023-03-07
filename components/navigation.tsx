@@ -6,7 +6,15 @@ import { CiSettings } from "react-icons/ci";
 import Logo from "../assets/vercel.svg";
 import { useState, useEffect, useRef } from "react";
 
-function Navigation({ movie, live, seriesCate }) {
+function Navigation({
+  movie,
+  live,
+  seriesCate,
+}: {
+  lastVod: Array<string | number | any>;
+  live: Array<string | number | any>;
+  seriesCate: Array<string | number | any>;
+}) {
   const [movieModal, setMovieModal] = useState(true);
   const [secMovie, setSecMovie] = useState(false);
   const [secLive, setSecLive] = useState(false);
