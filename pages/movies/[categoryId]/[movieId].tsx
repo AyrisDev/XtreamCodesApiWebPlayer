@@ -67,16 +67,17 @@ const MovieId = () => {
   });
 
   async function doTranscode() {
-    console.log("Loading ffmpeg-core.js");
     await ffmpeg.load();
+    console.log("Loading ffmpeg-core.js");
+    await ffmpeg.isLoaded();
 
     console.log("FFmpeg loaded");
     console.log("Fetching your video file");
     console.log(`URL: ${playerUrl}`);
-    let file = await fetchFile(playerUrl);
+    let file = await fetchFile(playerUrl, { mode: "no-cors" });
 
     ffmpeg.FS("writeFile", "test.mkv", file);
-    setMessage("Remuxing started");
+    console.log("Remuxing started");
     await ffmpeg.run(
       "-i",
       "test.mkv",

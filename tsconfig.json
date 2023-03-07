@@ -25,7 +25,8 @@
     "**/*.ts",
     "**/*.tsx",
     "components/CardGenre.js",
-    "components/layout.js"
+    "components/layout.js",
+    "components/navigation.js"
   ],
   "exclude": ["node_modules"]
 }
