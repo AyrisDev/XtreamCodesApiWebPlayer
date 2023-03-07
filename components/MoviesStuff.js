@@ -11,9 +11,9 @@ export default function MoviesStuff({
   title,
   lastTime,
 }: {
-  lastSeries: Array<string | number>;
-  title: string;
-  lastTime: number;
+  lastSeries: Array<string | number | any>,
+  title: string,
+  lastTime: number,
 }) {
   return (
     <div className="relative flex flex-col space-y-2 my-10 px-8 max-w-[1400px] mx-auto">
