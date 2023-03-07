@@ -1,11 +1,30 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import Head from "next/head";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import moment from "moment";
+import Navigationn from "@/components/navigation";
+import CatLogo from "@/components/CatLogo";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/free-mode";
+import { Autoplay, Pagination, Navigation, FreeMode } from "swiper";
+import BeinSlider from "@/components/beinSlider";
+import MoviesStuff from "@/components/MoviesStuff";
+import Sliderr from "@/components/Slider";
 
-const inter = Inter({ subsets: ['latin'] })
+export default function Home({
+  movie,
+  seriesCate,
+  live,
+  beinSport,
+  lastVod,
+  lastSeries,
+  lastTime,
+}) {
+  const router = useRouter();
 
-export default function Home() {
   return (
     <>
       <Head>
@@ -14,110 +33,100 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.tsx</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
+
+      <div className="flex flex-col space-y-2 w-full mx-auto min-h-screen  overflow-hidden ">
+        <div className="backdrop-filter backdrop-blur-[5px]">
+          {/*Slider Section */}
+          <Sliderr lastVod={lastVod} lastTime={lastTime} />
+          <CatLogo />
+          <BeinSlider beinSport={beinSport} />
+          <MoviesStuff results={lastSeries} lastTime={lastTime} title="" />
+          {/*Bein Sports
+          <h2 className="font-semibold ml-36  items-center  flex font-oswald text-xl uppercase">
+            Son Eklenen Filmler
+          </h2>
+           *
+          <div className="flex space-x-6 space-y-6 overflow-y-hidden overflow-x-scroll my-10 ml-24 scrollbar justify-center items-center   scrollbar-hide scrollbar scrollbar-thin scrollbar-thumb-[#10121b]  scrollbar-track-[#10121b]/30 pb-4  ">
+            <Swiper
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+              }}
+              speed={2500}
+              slidesPerView={5}
+              spaceBetween={20}
+              freeMode={true}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[FreeMode, Pagination, Autoplay]}
+              >
+              {beinSport ? (
+                <>
+                  {beinSport
+                    .filter((lastVoda) => lastVoda.num > 1)
+                    .map((filterLastVod) => (
+                      <SwiperSlide className="h-[250px] w-full  flex justify-center items-center relative font-oswald flex rounded-lg overflow-hidden shadow-xl border-[2px]  border-[#f9f9f9] border-opacity-10   hover:shadow-2xl transform transition duration-300 cursor-pointer border-[3px] border-[#f9f9f9] border-opacity-10   hover:shadow-2xl transform hover:scale-105 transition duration-300">
+                        <img
+                          src={filterLastVod.stream_icon}
+                          className="object-contain  h-[200px] w-full "
+                        />
+                      </SwiperSlide>
+                    ))}
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <SwiperSlide className="flex justify-center items-center">
+                    Loading
+                  </SwiperSlide>
+                </>
+              )}
+            </Swiper>
+          </div> /}
+          {/*Last Added Movies
+          <h2 className="font-semibold ml-36  items-center  flex font-oswald text-xl uppercase">
+            Son Eklenen Filmler
+          </h2>
+           
+          <div className="flex space-x-6 space-y-6 overflow-y-hidden overflow-x-scroll my-10 ml-24 scrollbar justify-center items-center   scrollbar-hide scrollbar scrollbar-thin scrollbar-thumb-[#10121b]  scrollbar-track-[#10121b]/30 pb-4  ">
+            <Swiper
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+              }}
+              speed={2500}
+              slidesPerView={5}
+              spaceBetween={20}
+              freeMode={true}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[FreeMode, Pagination, Autoplay]}
+              className="max-w-[80%] ">
+              {beinSport ? (
+                <>
+                  {beinSport.map((filterLastVod) => (
+                    <SwiperSlide className="h-[250px] w-full rounded rounded-2xl  flex justify-center items-center relative font-oswald flex rounded-lg overflow-hidden shadow-xl border-[2px]  border-[#f9f9f9] border-opacity-10   hover:shadow-2xl transform transition duration-300 cursor-pointer border-[3px] border-[#f9f9f9] border-opacity-10   hover:shadow-2xl transform hover:scale-105 transition duration-300">
+                      <img
+                        src={filterLastVod.stream_icon}
+                        className="object-fill  h-[200px] w-full "
+                      />
+                    </SwiperSlide>
+                  ))}
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <SwiperSlide className="flex justify-center items-center">
+                    Loading
+                  </SwiperSlide>
+                </>
+              )}
+            </Swiper>
+          </div> */}
         </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
-          </div>
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+      </div>
     </>
-  )
+  );
 }
