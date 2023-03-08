@@ -14,6 +14,14 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
           rel="stylesheet"
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Rubik+Distressed&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <body>
         <Main />

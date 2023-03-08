@@ -9,6 +9,7 @@ module.exports = {
     fontFamily: {
       neon: ["Tilt Neon", "cursive"],
       oswald: ["Oswald", "sans-serif"],
+      movieTitle: ["Fredericka the Great", "cursive"],
     },
     extend: {
       animation: {

@@ -7,7 +7,7 @@ import CardGenre from "@/components/CardGenre";
 import { ReactNetflixPlayer } from "react-netflix-player";
 
 function Live() {
-  const teste = "http://vip.forzatv.xyz:8080/mstfyldz/syhvbyz1903/84356.hls";
+  const teste = "http://magtv.soon.it:80/Jobotest123/DEMknd44GN/24712.m3u8";
   const router = useRouter();
   const [movie, setMovie] = useState<any[]>([]);
   const { id } = router.query;
