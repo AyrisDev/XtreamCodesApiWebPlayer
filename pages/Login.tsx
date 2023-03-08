@@ -57,7 +57,7 @@ export default function Login() {
             <input
               className="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md"
               type="text"
-              placeholder="forzaiptv"
+              placeholder="username"
               value={user}
               onChange={(e) => setUser(e.target.value)}
             />
@@ -67,7 +67,7 @@ export default function Login() {
             <input
               className="rounded-3xl border-none bg-yellow-400 bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md"
               type="text"
-              placeholder=""
+              placeholder="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

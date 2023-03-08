@@ -42,7 +42,7 @@ export default function App({ Component, pageProps }: AppProps) {
     if (url === null) {
       router.replace("/Login");
     }
-
+    const noCors = "https://cors-anywhere.herokuapp.com/";
     const vod = await fetch(urll + "&action=get_vod_categories");
     const live = await fetch(urll + "&action=get_live_categories");
     const series = await fetch(urll + "&action=get_series_categories");
@@ -78,7 +78,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <Layout movie={movie} live={live} seriesCate={seriesCate}>
+    <Layout movie={movie} live={live} seriesCate={seriesCate} login={login}>
       <Component
         {...pageProps}
         movie={movie}
@@ -91,4 +91,23 @@ export default function App({ Component, pageProps }: AppProps) {
       />
     </Layout>
   );
+}
+
+export async function getServerSideProps({ req, res }) {
+  /**
+   * Why these headers?
+   * - FFmpeg core (ffmpeg-core) uses SharedArrayBuffer, SharedArrayBuffer is disabled
+   * in all major browsers from 2018, reason = Spectre (security vulnerability)
+   * - FFmpeg core won't load, if these headers are not present
+   */
+
+  // prevent XS-leaks, don't load cross origin documents in the same browsing context
+  res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+
+  // prevent docs from loading cross-origin resource, only load resources from the same origin
+  res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+
+  return {
+    props: {},
+  };
 }

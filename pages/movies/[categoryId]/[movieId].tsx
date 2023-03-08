@@ -140,7 +140,7 @@ const MovieId = () => {
 
 export default MovieId;
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps({ req, res }) {
   /**
    * Why these headers?
    * - FFmpeg core (ffmpeg-core) uses SharedArrayBuffer, SharedArrayBuffer is disabled
@@ -149,10 +149,10 @@ export async function getServerSideProps(context) {
    */
 
   // prevent XS-leaks, don't load cross origin documents in the same browsing context
-  context?.res?.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+  res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
 
   // prevent docs from loading cross-origin resource, only load resources from the same origin
-  context?.res?.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+  res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
 
   return {
     props: {},
