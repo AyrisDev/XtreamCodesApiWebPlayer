@@ -190,7 +190,7 @@ function Navigation({ movie, live, seriesCate }) {
                 <div
                   className="font-bold   relative  two px-4"
                   key={genre.category_id}>
-                  <a href={`/movies/category/${genre.category_id}`}>
+                  <a href={`/movie/category/${genre.category_id}`}>
                     <li className=" cursor-pointer  hover:scale-105   mt-2 font-oswald relative">
                       {genre.category_name}
                     </li>

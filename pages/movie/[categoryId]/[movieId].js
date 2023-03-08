@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useRouter } from "next/router";
+
+import { useRouter, withRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { ReactNetflixPlayer } from "react-netflix-player";
@@ -10,9 +11,10 @@ const MovieId = () => {
 
   const [videoSrc, setVideoSrc] = useState("");
   const [subsSrc, setSubsSrc] = useState("");
-
+  const [bgUrl, setBgUrl] = useState();
+  console.log(bgUrl);
   const { movieId } = router.query;
-
+  const { urlId } = router.asPath;
   const [movieInfo, setMovieInfo] = useState("");
   const [playerUrl, setPlayerUrl] = useState("");
 
@@ -24,7 +26,7 @@ const MovieId = () => {
 
     const usernamee = await JSON.parse(username);
     const passwordd = await JSON.parse(password);
-
+    const noCors = "https://cors-anywhere.herokuapp.com/";
     const dataUrll = await JSON.parse(dataUrl);
     const urll = await JSON.parse(url);
     if (url === null) {
@@ -38,8 +40,11 @@ const MovieId = () => {
     setMovieInfo(data.info);
     console.log(JSON.stringify(data.info.name) + "566");
     console.log(JSON.stringify(data.info));
+    console.log(router.asPath);
 
     const movieData = data?.movie_data || {};
+    const movieInfoData = data?.info || {};
+    setBgUrl(movieInfoData?.backdrop_path);
     const movieUrl = `${dataUrll}/movie/${usernamee}/${passwordd}/${movieData?.stream_id}.${movieData?.container_extension}`;
 
     await setPlayerUrl(movieUrl);
@@ -53,20 +58,27 @@ const MovieId = () => {
   }, [movieId]);
 
   return (
-    <div className="w-screen h-screen">
+    <div className="w-screen h-screen ]">
+      <img src={bgUrl} className="absolute top-0 left-0 w-full h-full" />
+
       {movieInfo ? (
         <>
-          <div className="font-bold text-[100px]">
+          <div className="font-bold flex flex-col ">
             {" "}
-            <h1> test</h1>
+            <h1> {router.pathname}</h1>
+            <div>
+              {" "}
+              <ReactPlayer
+                url={playerUrl}
+                playing={false}
+                width="50%"
+                height="65%"
+                controls={true}
+              />{" "}
+            </div>
+            <div> </div>
           </div>
-          <ReactPlayer
-            url={videoSrc}
-            playing={false}
-            width="50%"
-            height="65%"
-            controls={true}
-          />
+
           {/*
           <ReactNetflixPlayer
             src={playerUrl}
@@ -87,22 +99,3 @@ const MovieId = () => {
 };
 
 export default MovieId;
-
-export async function getServerSideProps({ req, res }) {
-  /**
-   * Why these headers?
-   * - FFmpeg core (ffmpeg-core) uses SharedArrayBuffer, SharedArrayBuffer is disabled
-   * in all major browsers from 2018, reason = Spectre (security vulnerability)
-   * - FFmpeg core won't load, if these headers are not present
-   */
-
-  // prevent XS-leaks, don't load cross origin documents in the same browsing context
-  res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
-
-  // prevent docs from loading cross-origin resource, only load resources from the same origin
-  res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
-
-  return {
-    props: {},
-  };
-}

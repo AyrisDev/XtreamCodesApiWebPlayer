@@ -8,6 +8,7 @@ import CardGenre from "@/components/movieCard";
 function Categories() {
   const router = useRouter();
   const [movie, setMovie] = useState([]);
+
   const { id } = router.query;
 
   console.log(id + "catid");
@@ -26,8 +27,6 @@ function Categories() {
     setMovie(data);
   };
 
-  console.log(movie + "routerId");
-
   useEffect(() => {
     if (id !== undefined) {
       movieRequest();
@@ -39,12 +38,12 @@ function Categories() {
       <Head>
         <title>Movies | Watcho</title>
       </Head>
-      <section className="mb-10 flex flex-wrap justify-between space-y-2 ">
+      <section className="mb-10 flex flex-wrap justify-center space-y-4 space-x-4 ">
         {movie ? (
           <>
             {movie.map((genre) => (
               <Link
-                href={`/movies/${id}/${genre.stream_id}`}
+                href={`/movie/${id}/${genre.stream_id}`}
                 passHref
                 key={genre.stream_id}>
                 <CardGenre text={genre.name} image={genre.stream_icon} />
