@@ -7,11 +7,11 @@ import CardGenre from "@/components/movieCard";
 
 function Categories() {
   const router = useRouter();
-  const [movie, setMovie] = useState<any[]>([]);
+  const [movie, setMovie] = useState([]);
   const { id } = router.query;
 
   const movieRequest = async () => {
-    const url = sessionStorage.getItem("xtreamUrl") as string;
+    const url = sessionStorage.getItem("xtreamUrl");
     const urll = await JSON.parse(url);
     if (url === null) {
       router.replace("/Login");
